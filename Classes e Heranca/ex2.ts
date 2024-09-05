@@ -26,4 +26,7 @@ namespace Classes {
             console.log(`Saldo atual na conta: R$${this.saldo}; Limite: R$${this.limiteCredito}`);
         }
     }
+
+    var conta1: ContaCorrente = new ContaCorrente("Neymar Júnior", 999999999999, 999999999999);
+    conta1.exibirSalario();
 }
