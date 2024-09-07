@@ -1,14 +1,15 @@
-function medirTempoDeExecucao(target: any, propertyKey: string, descriptor: PropertyDescriptor) {
-    const metodoOriginal = descriptor.value;
+function medirTempoDeExecucao(
+    target: any,
+    context: ClassMethodDecoratorContext
+) {
+    const metodoOriginal = target;
 
-    descriptor.value = function (...args: any[]) {
-        console.time(propertyKey);  
+    return function (...args: any[]) {
+        console.time(context.name as string);
         const resultado = metodoOriginal.apply(this, args);
-        console.timeEnd(propertyKey); 
+        console.timeEnd(context.name as string);
         return resultado;
     };
-    
-    return descriptor;
 }
 
 class Calculadora {
